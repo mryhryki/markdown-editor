@@ -4,7 +4,7 @@ export const App: React.FC = () => {
   return (
     <div id="wrapper">
       <header>
-        <h1>Markdown Editor</h1>
+        Markdown Editor
       </header>
       <div id="editor">
         <textarea id="markdown-text">Text Area</textarea>
