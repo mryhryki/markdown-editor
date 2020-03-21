@@ -11,14 +11,16 @@
     "test": "test"
   },
   "dependencies": {
+    "@types/jest": "^25.1.4",
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "style-loader": "^1.1.3"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "jest": "^25.1.0",
     "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",
