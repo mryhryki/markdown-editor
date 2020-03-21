@@ -1,5 +1,1 @@
-const main = (text: number) => {
-  console.log(text)
-}
-
-main('Hello, Webpack & TypeScript!')
+console.log('Hello, Webpack & TypeScript!')
