@@ -3,6 +3,7 @@ import React, {
   useEffect,
 } from 'react'
 import { getQueryParams } from './util/query_params'
+import { Preview } from './component/preview'
 
 export const App: React.FC = () => {
   const [text, setText] = useState<string>('')
@@ -25,7 +26,11 @@ export const App: React.FC = () => {
           onChange={(event) => setText(event.target.value)}
           value={text}
         />
-        <div id="markdown-preview">{text}</div>
+        <div id="markdown-preview">
+          <Preview>
+            {text}
+          </Preview>
+        </div>
       </div>
     </div>
   )
