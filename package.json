@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "hyiromori",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "webpack",
     "test": "test"
   },
