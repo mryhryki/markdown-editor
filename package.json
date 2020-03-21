@@ -1,0 +1,23 @@
+{
+  "name": "markdown-editor",
+  "version": "1.0.0",
+  "description": "Markdown edit with preview on browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyiromori/markdown-editor.git"
+  },
+  "keywords": [
+    "markdown",
+    "editor"
+  ],
+  "author": "hyiromori",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyiromori/markdown-editor/issues"
+  },
+  "homepage": "https://github.com/hyiromori/markdown-editor#readme"
+}
