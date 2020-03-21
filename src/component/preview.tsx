@@ -9,6 +9,8 @@ export const Preview: React.FC<Props> = (props) => {
   const { children: text } = props
 
   return (
-    <ReactMarkdown source={text} />
+    <div className="markdown-body">
+      <ReactMarkdown source={text} />
+    </div>
   )
 }
