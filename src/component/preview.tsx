@@ -3,7 +3,9 @@ import React, {
   useState,
 } from 'react'
 import Worker from 'worker-loader!../worker/markdown.ts'
+import HtmlToReact from 'html-to-react'
 
+const htmlParser = new HtmlToReact.Parser()
 const worker = new Worker()
 
 interface Props {
@@ -34,7 +36,7 @@ export const Preview: React.FC<Props> = (props) => {
 
   return (
     <div className="markdown-body">
-      <div dangerouslySetInnerHTML={{ __html: previewHtml }} />
+      {htmlParser.parse(previewHtml)}
     </div>
   )
 }
