@@ -7,9 +7,11 @@ import { addHistory } from './util/history'
 import { Header } from './component/header'
 import { Button } from './component/button'
 import { Editor } from './component/editor'
+import { SaveModal } from './component/save_modal'
 
 export const App: React.FC = () => {
   const [text, setText] = useState<string>('')
+  const [modal, setModal] = useState<React.ReactNode | null>(null)
 
   const onChangeText = (text: string): void => {
     setText(text)
@@ -20,20 +22,28 @@ export const App: React.FC = () => {
     setText(localStorage.getItem('text') || '')
   }, [])
 
+  const onSave = (): void => {
+    setModal(
+      <SaveModal
+        onSave={(title) => {
+          addHistory(dayjs().format('YYYY-MM-DD HH:mm:ss'), title, text)
+            .catch(console.error)
+            .finally(() => setModal(null))
+        }}
+        onCancel={() => setModal(null)}
+      />,
+    )
+  }
+
   return (
-    <div id="wrapper">
+    <>
       <Header>
-        <Button
-          onClick={() => {
-            const datetime = dayjs().format('YYYY-MM-DD HH:mm:ss')
-            addHistory(datetime, datetime, text)
-              .catch(console.error)
-          }}
-        >
+        <Button onClick={onSave}>
           保存
         </Button>
       </Header>
       <Editor text={text} setText={onChangeText} />
-    </div>
+      {modal != null ? modal : null}
+    </>
   )
 }

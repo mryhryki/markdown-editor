@@ -1,3 +1,10 @@
 body * {
   box-sizing: border-box;
 }
+
+input[type=text] {
+  display: block;
+  font-size: 1rem;
+  height: 2rem;
+  width: 20rem;
+}
