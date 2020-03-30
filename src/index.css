@@ -2,26 +2,6 @@ body * {
   box-sizing: border-box;
 }
 
-header {
-  align-content: center;
-  display: flex;
-  font-size: 1.5rem;
-  height: 2rem;
-  justify-content: space-between;
-  left: 0;
-  line-height: 2rem;
-  padding: 0.5rem 1rem;
-  position: fixed;
-  right: 0;
-  top: 0;
-}
-
-header > div {
-  height: 2rem;
-  display: flex;
-  align-content: center;
-}
-
 #save-text-to-storage {
   background: white;
   box-shadow: none;
