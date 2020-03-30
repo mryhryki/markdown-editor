@@ -3,11 +3,7 @@ import React, {
   useEffect,
 } from 'react'
 import dayjs from 'dayjs'
-import { getQueryParams } from './util/query_params'
-import {
-  addHistory,
-  listHistory,
-} from './util/history'
+import { addHistory } from './util/history'
 import { Header } from './component/header'
 import { Button } from './component/button'
 import { Editor } from './component/editor'
@@ -15,17 +11,13 @@ import { Editor } from './component/editor'
 export const App: React.FC = () => {
   const [text, setText] = useState<string>('')
 
+  const onChangeText = (text: string): void => {
+    setText(text)
+    localStorage.setItem('text', text)
+  }
+
   useEffect(() => {
-    const queryParams = getQueryParams(window.location.search)
-    if (queryParams.text != null && queryParams.text.trim() !== '') {
-      setText(queryParams.text)
-    } else {
-      listHistory(0).then((histories) => {
-        if (histories[0] != null) {
-          setText(histories[0].text)
-        }
-      })
-    }
+    setText(localStorage.getItem('text') || '')
   }, [])
 
   return (
@@ -41,7 +33,7 @@ export const App: React.FC = () => {
           保存
         </Button>
       </Header>
-      <Editor text={text} setText={setText} />
+      <Editor text={text} setText={onChangeText} />
     </div>
   )
 }
