@@ -8,8 +8,9 @@ import {
   addHistory,
   listHistory,
 } from './util/history'
-import { Preview } from './component/preview'
 import { Header } from './component/header'
+import { Button } from './component/button'
+import { Editor } from './component/editor'
 
 export const App: React.FC = () => {
   const [text, setText] = useState<string>('')
@@ -30,8 +31,7 @@ export const App: React.FC = () => {
   return (
     <div id="wrapper">
       <Header>
-        <button
-          id="save-text-to-storage"
+        <Button
           onClick={() => {
             const datetime = dayjs().format('YYYY-MM-DD HH:mm:ss')
             addHistory(datetime, datetime, text)
@@ -39,21 +39,9 @@ export const App: React.FC = () => {
           }}
         >
           保存
-        </button>
-        <div>TEST</div>
+        </Button>
       </Header>
-      <div id="editor">
-        <textarea
-          id="markdown-text"
-          onChange={(event) => setText(event.target.value)}
-          value={text}
-        />
-        <div id="markdown-preview">
-          <Preview>
-            {text}
-          </Preview>
-        </div>
-      </div>
+      <Editor text={text} setText={setText} />
     </div>
   )
 }
