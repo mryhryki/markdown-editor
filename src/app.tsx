@@ -2,6 +2,12 @@ import React, {
   useState,
   useEffect,
 } from 'react'
+import {
+  HashRouter,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 import dayjs from 'dayjs'
 import { addHistory } from './util/history'
 import { Header } from './component/header'
@@ -37,12 +43,22 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <Header>
-        <Button onClick={onSave}>
-          保存
-        </Button>
-      </Header>
-      <Editor text={text} setText={onChangeText} />
+      <HashRouter>
+        <Header>
+          <Button onClick={onSave}>
+            保存
+          </Button>
+        </Header>
+        <Switch>
+          <Route exact path="/">
+            <Editor text={text} setText={onChangeText} />
+          </Route>
+          <Route exact path="/history">
+            <h2>HISTORY</h2>
+          </Route>
+          <Redirect to="/" path="*" />
+        </Switch>
+      </HashRouter>
       {modal != null ? modal : null}
     </>
   )
