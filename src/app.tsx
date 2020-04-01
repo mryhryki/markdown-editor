@@ -10,22 +10,21 @@ import {
 } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { addHistory } from './util/history'
-import { Header } from './component/header'
-import { Button } from './component/button'
-import { Editor } from './component/editor'
+import { Editor } from './page/editor'
+import { History } from './page/history'
 import { SaveModal } from './component/save_modal'
 
 export const App: React.FC = () => {
-  const [text, setText] = useState<string>('')
+  const [text, _setText] = useState<string>('')
   const [modal, setModal] = useState<React.ReactNode | null>(null)
 
-  const onChangeText = (text: string): void => {
-    setText(text)
+  const setText = (text: string): void => {
+    _setText(text)
     localStorage.setItem('text', text)
   }
 
   useEffect(() => {
-    setText(localStorage.getItem('text') || '')
+    _setText(localStorage.getItem('text') || '')
   }, [])
 
   const onSave = (): void => {
@@ -44,17 +43,16 @@ export const App: React.FC = () => {
   return (
     <>
       <HashRouter>
-        <Header>
-          <Button onClick={onSave}>
-            保存
-          </Button>
-        </Header>
         <Switch>
           <Route exact path="/">
-            <Editor text={text} setText={onChangeText} />
+            <Editor
+              text={text}
+              setText={setText}
+              onSave={onSave}
+            />
           </Route>
           <Route exact path="/history">
-            <h2>HISTORY</h2>
+            <History />
           </Route>
           <Redirect to="/" path="*" />
         </Switch>

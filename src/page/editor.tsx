@@ -5,6 +5,9 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import Worker from 'worker-loader!../worker/markdown.ts'
+import { useHistory } from 'react-router-dom'
+import { Header } from '../component/header'
+import { Button } from '../component/button'
 import HtmlToReact from 'html-to-react'
 
 const htmlParser = new HtmlToReact.Parser()
@@ -42,15 +45,16 @@ const Preview = styled.div`
 `
 
 interface Props {
+  onSave: () => void
   text: string
   setText: (text: string) => void
 }
 
 let modified: number = 0
-
 export const Editor: React.FC<Props> = (props) => {
-  const { text, setText } = props
+  const { onSave, text, setText } = props
   const [previewHtml, setPreviewHtml] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     const now = (new Date()).getTime()
@@ -70,14 +74,24 @@ export const Editor: React.FC<Props> = (props) => {
   }, [])
 
   return (
-    <Wrapper>
-      <TextArea
-        onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setText(event.target.value)}
-        value={props.text}
-      />
-      <Preview className="markdown-body">
-        {htmlParser.parse(previewHtml)}
-      </Preview>
-    </Wrapper>
+    <>
+      <Header>
+        <Button onClick={() => history.push('/history')}>
+          履歴
+        </Button>
+        <Button onClick={onSave}>
+          保存
+        </Button>
+      </Header>
+      <Wrapper>
+        <TextArea
+          onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setText(event.target.value)}
+          value={text}
+        />
+        <Preview className="markdown-body">
+          {htmlParser.parse(previewHtml)}
+        </Preview>
+      </Wrapper>
+    </>
   )
 }
