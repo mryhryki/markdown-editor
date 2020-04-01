@@ -19,8 +19,9 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname),
-    filename: 'dist/index.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    publicPath: 'dist/',
   },
   devServer: {
     hot: true,
