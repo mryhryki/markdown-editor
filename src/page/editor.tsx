@@ -75,7 +75,7 @@ export const Editor: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Header>
+      <Header title="Markdown Editor">
         <Button onClick={() => history.push('/history')}>
           履歴
         </Button>

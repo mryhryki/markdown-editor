@@ -22,13 +22,14 @@ const Control = styled.div`
 `
 
 interface Props {
+  title: string
   children: React.ReactNode
 }
 
 export const Header: React.FC<Props> = (props) => (
   <StyledHeader>
     <div>
-      Markdown Editor
+      {props.title}
     </div>
     <Control>
       {props.children}
