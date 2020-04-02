@@ -109,7 +109,7 @@ export const History: React.FC = () => {
       </Histories>
       <Pager>
         <PagerButton onClick={() => onChangePage(page - 1)} disabled={page <= 1}>＜</PagerButton>
-        {page} / {totalPage}
+        Page: {page} / {totalPage}
         <PagerButton onClick={() => onChangePage(page + 1)} disabled={page >= totalPage}>＞</PagerButton>
       </Pager>
     </>
