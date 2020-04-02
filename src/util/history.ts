@@ -24,7 +24,8 @@ export const getHistory = async (datetime: string): Promise<History | null> => {
   return null
 }
 
-const NUM_PER_PAGE = 50
+export const NUM_PER_PAGE = 50
+
 export const listHistory = async (page: number = 1): Promise<Array<History>> => {
   const offset = (page - 1) * NUM_PER_PAGE
   return await histories.orderBy('datetime')
@@ -33,3 +34,8 @@ export const listHistory = async (page: number = 1): Promise<Array<History>> => 
                         .limit(NUM_PER_PAGE)
                         .toArray()
 }
+
+export const countHistory = async (): Promise<number> => {
+  return histories.count()
+}
+
