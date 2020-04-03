@@ -100,7 +100,7 @@ export const History: React.FC = () => {
       </Header>
       <Histories>
         {history.map(h => (
-          <HistoryCard to={`/#id=${encodeURIComponent(h.datetime)}`} key={h.datetime}>
+          <HistoryCard to={`/?id=${encodeURIComponent(h.datetime)}`} key={h.datetime}>
             <HistoryTitle>{h.title}</HistoryTitle>
             <HistoryText>{h.text}</HistoryText>
             <HistoryDatetime>{h.datetime}</HistoryDatetime>

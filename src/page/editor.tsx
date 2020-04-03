@@ -5,10 +5,12 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import Worker from 'worker-loader!../worker/markdown.ts'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { Header } from '../component/header'
 import { Button } from '../component/button'
 import HtmlToReact from 'html-to-react'
+import { getQueryParams } from '../util/query_params'
+import { getHistory } from '../util/history'
 
 const htmlParser = new HtmlToReact.Parser()
 const worker = new Worker()
@@ -55,6 +57,7 @@ export const Editor: React.FC<Props> = (props) => {
   const { onSave, text, setText } = props
   const [previewHtml, setPreviewHtml] = useState('')
   const history = useHistory()
+  const location = useLocation()
 
   useEffect(() => {
     const now = (new Date()).getTime()
@@ -67,6 +70,16 @@ export const Editor: React.FC<Props> = (props) => {
   }, [text])
 
   useEffect(() => {
+    const queryParams = getQueryParams(location.search)
+    const { id } = queryParams
+    if (id != null) {
+      getHistory(id).then((history) => {
+        if (history != null) {
+          setText(history.text)
+        }
+      })
+    }
+
     worker.onmessage = (event) => {
       const { html } = event.data
       setPreviewHtml(html)
