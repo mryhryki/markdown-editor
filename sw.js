@@ -1,12 +1,22 @@
 const CACHE_NAME = 'Cache:1.0.0'
 
+const openCache = () => caches.open(CACHE_NAME)
+
+const fetchOrCache = async (request) => {
+  const cache = await openCache()
+  try {
+    const networkResponse = await fetch(request)
+    await cache.put(request, networkResponse.clone())
+    return networkResponse
+  } catch (err) {
+    console.error('Fetch error:', err.message)
+    return cache.match(request)
+  }
+}
+
 self.addEventListener('install', (event) => {
   console.log('ServiceWorker install:', event)
-  event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then(() => console.log('Opened cache:', CACHE_NAME)),
-  )
+  event.waitUntil(openCache().then(() => console.log('Opened cache:', CACHE_NAME)))
 })
 
 self.addEventListener('activate', (event) => {
@@ -15,17 +25,5 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.log('Fetch to:', event.request.url)
-  event.respondWith(
-    caches
-      .open(CACHE_NAME)
-      .then((cache) => fetch(event.request)
-        .then((networkResponse) => {
-          cache.put(event.request, networkResponse.clone())
-          return networkResponse
-        }).catch((err) => {
-          console.error('Fetch error:', err.message)
-          return caches.open(CACHE_NAME).then((cache) => cache.match(event.request))
-        }),
-      ),
-  )
+  event.respondWith(fetchOrCache(event.request))
 })
