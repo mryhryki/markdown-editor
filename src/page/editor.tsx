@@ -5,9 +5,13 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import Worker from 'worker-loader!../worker/markdown.ts'
-import { useHistory, useLocation } from 'react-router-dom'
+import {
+  useHistory,
+  useLocation,
+} from 'react-router-dom'
 import { Header } from '../component/header'
 import { Button } from '../component/button'
+import { Link } from '../component/link'
 import HtmlToReact from 'html-to-react'
 import { getQueryParams } from '../util/query_params'
 import { getHistory } from '../util/history'
@@ -89,12 +93,12 @@ export const Editor: React.FC<Props> = (props) => {
   return (
     <>
       <Header title="Markdown Editor">
-        <Button onClick={() => history.push('/history')}>
-          履歴
-        </Button>
         <Button onClick={onSave}>
-          保存
+          保存する
         </Button>
+        <Link href="/history">
+          履歴を見る
+        </Link>
       </Header>
       <Wrapper>
         <TextArea

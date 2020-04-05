@@ -4,10 +4,10 @@ import React, {
 } from 'react'
 import {
   useHistory,
-  Link,
+  Link as RouterLink,
 } from 'react-router-dom'
 import { Header } from '../component/header'
-import { Button } from '../component/button'
+import { Link } from '../component/link'
 import styled from 'styled-components'
 import {
   countHistory,
@@ -23,7 +23,7 @@ const Histories = styled.div`
   top: 3rem;
 `
 
-const HistoryCard = styled(Link)`
+const HistoryCard = styled(RouterLink)`
   border: 1px solid silver;
   color: black;
   display: block;
@@ -94,9 +94,9 @@ export const History: React.FC = () => {
   return (
     <>
       <Header title="履歴">
-        <Button onClick={() => browserHistory.push('/')}>
+        <Link href="/">
           エディタに戻る
-        </Button>
+        </Link>
       </Header>
       <Histories>
         {history.map(h => (
