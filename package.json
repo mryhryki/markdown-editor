@@ -7,7 +7,7 @@
   "author": "hyiromori",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack",
+    "build": "rm -rf ./dist && webpack",
     "test": "test"
   },
   "dependencies": {
