@@ -1,4 +1,5 @@
 const path = require('path')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -15,6 +16,17 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new GenerateSW({
+      swDest: path.resolve(__dirname, 'sw.js'),
+      runtimeCaching: [
+        {
+          handler: 'NetworkFirst',
+          urlPattern: /.*/,
+        },
+      ],
+    }),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
