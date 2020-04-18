@@ -1,4 +1,4 @@
-const log = (message: string): void => {
+const log = (message: number): void => {
   console.log(message)
 }
 
