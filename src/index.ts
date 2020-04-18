@@ -1,2 +1,5 @@
-console.log('Hello, Webpack + TypeScript!')
+const log = (message: number): void => {
+  console.log(message)
+}
 
+log('Hello, Webpack + TypeScript!')
