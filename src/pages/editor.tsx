@@ -1,23 +1,16 @@
-import React, {
-  ChangeEvent,
-  useEffect,
-  useState,
-} from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
-import Worker from 'worker-loader!../worker/markdown.ts'
-import {
-  useHistory,
-  useLocation,
-} from 'react-router-dom'
-import { Header } from '../component/header'
-import { Button } from '../component/button'
-import { Link } from '../component/link'
-import HtmlToReact from 'html-to-react'
-import { getQueryParams } from '../util/query_params'
-import { getHistory } from '../util/history'
 
-const htmlParser = new HtmlToReact.Parser()
-const worker = new Worker()
+const Header = styled.header`
+  font-size: 1.5rem;
+  height: 2rem;
+  left: 0;
+  line-height: 2rem;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+`
 
 const Wrapper = styled.div`
   bottom: 0;
@@ -50,64 +43,15 @@ const Preview = styled.div`
   width: 50vw;
 `
 
-interface Props {
-  onSave: () => void
-  text: string
-  setText: (text: string) => void
-}
-
-let modified: number = 0
-export const Editor: React.FC<Props> = (props) => {
-  const { onSave, text, setText } = props
-  const [previewHtml, setPreviewHtml] = useState('')
-  const history = useHistory()
-  const location = useLocation()
-
-  useEffect(() => {
-    const now = (new Date()).getTime()
-    modified = now
-    setTimeout(() => {
-      if (modified === now) {
-        worker.postMessage({ markdown: text })
-      }
-    }, 500)
-  }, [text])
-
-  useEffect(() => {
-    const queryParams = getQueryParams(location.search)
-    const { id } = queryParams
-    if (id != null) {
-      getHistory(id).then((history) => {
-        if (history != null) {
-          setText(history.text)
-        }
-      })
-    }
-
-    worker.onmessage = (event) => {
-      const { html } = event.data
-      setPreviewHtml(html)
-    }
-  }, [])
-
+export const Editor: React.FC = () => {
   return (
     <>
-      <Header title="Markdown Editor">
-        <Button onClick={onSave}>
-          保存する
-        </Button>
-        <Link href="/history">
-          履歴を見る
-        </Link>
+      <Header>
+        Markdown Editor
       </Header>
       <Wrapper>
-        <TextArea
-          onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setText(event.target.value)}
-          value={text}
-        />
-        <Preview className="markdown-body">
-          {htmlParser.parse(previewHtml)}
-        </Preview>
+        <TextArea value="テキスト入力エリア" />
+        <Preview>プレビューエリア</Preview>
       </Wrapper>
     </>
   )
