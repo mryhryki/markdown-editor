@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
-import { useStateWithStorage } from '../hooks/use_state_with_storage'
 
 const { useState } = React
 
@@ -50,8 +49,7 @@ const Preview = styled.div`
 const StorageKey = 'pages/editor:text'
 
 export const Editor: React.FC = () => {
-  // const [text, setText] = useState<string>(localStorage.getItem(StorageKey) || '')
-  const [text, setText] = useStateWithStorage('', StorageKey)
+  const [text, setText] = useState<string>(localStorage.getItem(StorageKey) || '')
 
   return (
     <>
