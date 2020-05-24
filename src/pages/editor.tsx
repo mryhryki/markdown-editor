@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import ReactMarkdown from 'react-markdown'
 
 const { useState } = React
 
@@ -65,9 +64,7 @@ export const Editor: React.FC = () => {
           }}
           value={text}
         />
-        <Preview>
-          <ReactMarkdown source={text} />
-        </Preview>
+        <Preview>プレビューエリア</Preview>
       </Wrapper>
     </>
   )
