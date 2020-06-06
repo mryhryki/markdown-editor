@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import * as ReactMarkdown from 'react-markdown'
 import { useStateWithStorage } from '../hooks/use_state_with_storage'
+import '../indexeddb/memos'
 
 const Header = styled.header`
   font-size: 1.5rem;
