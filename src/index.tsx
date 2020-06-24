@@ -8,7 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import { Editor } from './pages/editor'
-import { Button } from './components/button'
+import { History } from './pages/history'
 
 const GlobalStyle = createGlobalStyle`
   body * {
@@ -25,7 +25,7 @@ const Main = (
           <Editor />
         </Route>
         <Route exact path="/history">
-          <h1>History</h1>
+          <History />
         </Route>
         <Redirect to="/editor" path="*" />
       </Switch>
