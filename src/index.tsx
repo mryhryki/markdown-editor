@@ -8,6 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import { Editor } from './pages/editor'
+import { Button } from './components/button'
 
 const GlobalStyle = createGlobalStyle`
   body * {
