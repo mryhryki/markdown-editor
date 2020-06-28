@@ -19,7 +19,7 @@ const NUM_PER_PAGE: number = 10
 
 export const getMemoPageCount = async (): Promise<number> => {
   const totalCount = await memos.count()
-  return Math.floor(totalCount / NUM_PER_PAGE)
+  return Math.ceil(totalCount / NUM_PER_PAGE)
 }
 
 export const getMemos = (page: number): Promise<MemoRecord[]> => {
