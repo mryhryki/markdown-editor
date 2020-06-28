@@ -83,6 +83,7 @@ interface Props {
 export const History: React.FC<Props> = (props) => {
   const { setText } = props
   const [memos, setMemos] = useState<MemoRecord[]>([])
+  console.log(memos)
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
   const history = useHistory()
@@ -112,20 +113,18 @@ export const History: React.FC<Props> = (props) => {
         </Header>
       </HeaderArea>
       <Wrapper>
-        {memos.map((memo) => {
-          return (
-            <Memo
-              key={memo.datetime}
-              onClick={() => {
-                setText(memo.text)
-                history.push('/editor')
-              }}
-            >
-              <MemoTitle>{memo.title}</MemoTitle>
-              <MemoText>{memo.text}</MemoText>
-            </Memo>
-          )
-        })}
+        {memos.map(memo => (
+          <Memo
+            key={memo.datetime}
+            onClick={() => {
+              setText(memo.text)
+              history.push('/editor')
+            }}
+          >
+            <MemoTitle>{memo.title}</MemoTitle>
+            <MemoText>{memo.text}</MemoText>
+          </Memo>
+        ))}
       </Wrapper>
       <Paging>
         <PagingButton
