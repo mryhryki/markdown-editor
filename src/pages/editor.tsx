@@ -1,14 +1,15 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import * as ReactMarkdown from 'react-markdown'
-import { useStateWithStorage } from '../hooks/use_state_with_storage'
 import { putMemo } from '../indexeddb/memos'
 import { Button } from '../components/button'
 import { SaveModal } from '../components/save_modal'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/header'
+import TestWorker from 'worker-loader!../worker/test.ts'
 
-const { useState } = React
+const testWorker = new TestWorker()
+const { useState, useEffect } = React
 
 const Wrapper = styled.div`
   bottom: 0;
@@ -56,6 +57,16 @@ interface Props {
 export const Editor: React.FC<Props> = (props) => {
   const { text, setText } = props
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    testWorker.onmessage = (event) => {
+      console.log('Main thread Received:', event.data)
+    }
+  }, [])
+
+  useEffect(() => {
+    testWorker.postMessage(text)
+  }, [text])
 
   return (
     <>
