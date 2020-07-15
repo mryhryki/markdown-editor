@@ -58,11 +58,6 @@ export const Editor: React.FC<Props> = (props) => {
   const { text, setText } = props
   const [showModal, setShowModal] = useState(false)
 
-  let count: number = 1
-  while (count < 1_000_000_000) { // このループ回数は小さ目の数で試してから徐々に大きくしてみてください
-    count++
-  }
-
   useEffect(() => {
     testWorker.onmessage = (event) => {
       console.log('Main thread Received:', event.data)
