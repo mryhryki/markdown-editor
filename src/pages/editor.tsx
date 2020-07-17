@@ -6,7 +6,7 @@ import { Button } from '../components/button'
 import { SaveModal } from '../components/save_modal'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/header'
-import TestWorker from 'worker-loader!../worker/test.ts'
+import TestWorker from 'worker-loader!../worker/convert_markdown_worker'
 
 const testWorker = new TestWorker()
 const { useState, useEffect } = React
