@@ -6,11 +6,13 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "@types/marked": "^1.1.0",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.0",
     "dexie": "^3.0.1",
+    "marked": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
