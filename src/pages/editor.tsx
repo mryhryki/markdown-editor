@@ -65,7 +65,7 @@ export const Editor: React.FC<Props> = (props) => {
   }, [])
 
   useEffect(() => {
-    testWorker.postMessage(text)
+    convertMarkdownWorker.postMessage(text)
   }, [text])
 
   return (
