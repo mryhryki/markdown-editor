@@ -1,8 +1,7 @@
 {
   "manifest_version": "2",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "name": "MarkdownEditor",
-  "short_name": "Editor",
   "icons": [
     {
       "src": "./image/icon_256x256.png",
@@ -12,6 +11,5 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0033ff",
-  "theme_color": "#ff8800"
+  "theme_color": "#000099"
 }
