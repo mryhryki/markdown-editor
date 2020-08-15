@@ -167,7 +167,7 @@ object-assign
   &:disabled {
     color: silver;
   }
-`,mi=e=>{const{setText:t}=e,[n,i]=Object(r.useState)([]);console.log(n);const[o,a]=Object(r.useState)(1),[u,l]=Object(r.useState)(1),c=te(F);ui(()=>{Lr(1).then(i),Dr(void 0,void 0,void 0,(function*(){const e=yield zr.count(),t=Math.ceil(e/10);return t>0?t:1})).then(l)},[]);const s=o<u,f=o>1,d=e=>{e<1||u<e||(a(e),Lr(e).then(i))};return r.createElement(r.Fragment,null,r.createElement(li,null,r.createElement(Xr,{title:"履歴"},r.createElement(le,{to:"/editor"},"エディタに戻る"))),r.createElement(ci,null,n.map(e=>r.createElement(si,{key:e.datetime,onClick:()=>{t(e.text),c.push("/editor")}},r.createElement(fi,null,e.title),r.createElement(di,null,e.text)))),r.createElement(pi,null,r.createElement(hi,{onClick:()=>d(o-1),disabled:!f},"＜"),o," / ",u,r.createElement(hi,{onClick:()=>d(o+1),disabled:!s},"＞")))},vi=a.a`
+`,mi=e=>{const{setText:t}=e,[n,i]=Object(r.useState)([]),[o,a]=Object(r.useState)(1),[u,l]=Object(r.useState)(1),c=te(F);ui(()=>{Lr(1).then(i),Dr(void 0,void 0,void 0,(function*(){const e=yield zr.count(),t=Math.ceil(e/10);return t>0?t:1})).then(l)},[]);const s=o<u,f=o>1,d=e=>{e<1||u<e||(a(e),Lr(e).then(i))};return r.createElement(r.Fragment,null,r.createElement(li,null,r.createElement(Xr,{title:"履歴"},r.createElement(le,{to:"/editor"},"エディタに戻る"))),r.createElement(ci,null,n.map(e=>r.createElement(si,{key:e.datetime,onClick:()=>{t(e.text),c.push("/editor")}},r.createElement(fi,null,e.title),r.createElement(di,null,e.text)))),r.createElement(pi,null,r.createElement(hi,{onClick:()=>d(o-1),disabled:!f},"＜"),o," / ",u,r.createElement(hi,{onClick:()=>d(o+1),disabled:!s},"＞")))},vi=a.a`
   body * {
     box-sizing: border-box;
   }
