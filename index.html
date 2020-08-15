@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <link rel="manifest" href="./manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" />
   <title>Markdown Editor</title>
 </head>
 <body>
@@ -12,11 +11,11 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').then((registration) => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, (err) => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
+          console.log('ServiceWorker registration successful with scope: ', registration.scope)
+        }).catch((err) => {
+          console.error('ServiceWorker registration failed: ', err)
+        })
+      })
     }
   </script>
 </body>

@@ -1,31 +1,31 @@
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-  background: white;
-  border: 1px solid gray;
+  background-color: dodgerblue;
+  border: none;
   box-shadow: none;
-  color: gray;
+  color: white;
   font-size: 1rem;
   height: 2rem;
   min-width: 5rem;
   padding: 0 1rem;
   
-  &.action {
-    background-color: dodgerblue;
-    border: none;
-    color: white;
+  &.cancel {
+    background: white;
+    border: 1px solid gray;
+    color: gray;
   }
 `
 
 interface Props {
+  cancel?: boolean
   children: string
   onClick: () => void
-  action?: boolean
 }
 
 export const Button: React.FC<Props> = (props) => (
-  <StyledButton onClick={props.onClick} className={props.action ? 'action' : ''}>
+  <StyledButton onClick={props.onClick} className={props.cancel ? 'cancel' : ''}>
     {props.children}
   </StyledButton>
 )
