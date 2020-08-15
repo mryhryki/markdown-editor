@@ -83,7 +83,6 @@ interface Props {
 export const History: React.FC<Props> = (props) => {
   const { setText } = props
   const [memos, setMemos] = useState<MemoRecord[]>([])
-  console.log(memos)
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
   const history = useHistory()
