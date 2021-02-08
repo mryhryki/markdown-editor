@@ -13,7 +13,7 @@
     "@types/sanitize-html": "^1.23.3",
     "@types/styled-components": "^5.1.2",
     "dexie": "^3.0.2",
-    "marked": "^1.1.1",
+    "marked": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
