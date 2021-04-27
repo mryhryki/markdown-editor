@@ -2,7 +2,7 @@
   "name": "markdown-editor",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "build": "webpack --mode production"
   },
   "dependencies": {
