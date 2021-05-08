@@ -20,6 +20,7 @@ module.exports = {
     publicPath: 'dist/',
   },
   devServer: {
+    publicPath: '/dist/',
     hot: true,
     open: true,
   }
