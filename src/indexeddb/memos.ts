@@ -7,7 +7,7 @@ export interface MemoRecord {
 }
 
 const database = new Dexie('markdown-editor')
-database.version(1).stores({ memos: '&datetime' })
+database.version(1).stores({ memos: '&datetim' })
 const memos: Dexie.Table<MemoRecord, string> = database.table('memos')
 
 export const putMemo = async (title: string, text: string): Promise<void> => {
